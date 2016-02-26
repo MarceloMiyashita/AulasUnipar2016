@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Listar posts</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Posts</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Título</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->getValor('posts') as $post) {?>
+                <tr>
+                    <td><?php echo $post->idpost; ?></td>
+                    <td><?php echo $post->titulo; ?></td>
+                    <td><a href="post-editar.php?idpost=<?php echo $post->idpost; ?>">[Editar]</a></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </body>
+</html>

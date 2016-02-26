@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<?php $post = $this->getValor('post'); ?>
+
+<html>
+    <head>
+        <title>Editar post</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Editar post</h1>
+        
+        <?php
+        $erro = $this->getValor('erro');
+        if ($erro != '') {
+        ?>
+        <p>Mensagem de erro: <?php echo $erro; ?></p>
+        <?php
+        }
+        ?>
+        
+        <form action="post-editar.php" method="post">
+            Id:
+            <input
+            type="text"
+            name="idpost"
+            value="<?php echo $post->idpost;?>"
+            readonly>
+            <br>
+
+            Título:
+            <input
+            type="text"
+            name="titulo"
+            value="<?php echo $post->titulo;?>">
+            <br>
+            
+            Categoria:
+            <select name="idcategoria">
+                <?php
+                $categorias = $this->getValor('categorias');
+                
+                foreach($categorias as $categoria) {
+                ?>
+                <option value="<?php echo $categoria->idcategoria; ?>" 
+                        <?php if($categoria->idcategoria == $post->idcategoria){
+                        ?> selected <?php }?>>
+                        
+                    <?php echo $categoria->categoria; ?></option>
+                <?php } ?>
+            </select>
+            <br>
+            
+            Texto:
+            <textarea name="texto" rows="5"><?php echo $post->texto; ?></textarea>
+            <br>
+            <input type="submit" value="Alterar">
+        </form>
+    </body>
+</html>
+

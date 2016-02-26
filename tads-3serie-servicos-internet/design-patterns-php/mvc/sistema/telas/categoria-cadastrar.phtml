@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Cadastrar categoria</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Cadastrar categoria</h1>
+        
+        <?php
+        $erro = $this->getValor('erro');
+        if ($erro != '') {
+        ?>
+        <p>Mensagem de erro: <?php echo $erro; ?></p>
+        <?php
+        }
+        ?>
+        
+        <form action="categoria-cadastrar.php" method="post">
+            Categoria:
+            <input type="text" name="categoria">
+            <br>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </body>
+</html>
