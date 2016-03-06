@@ -1,11 +1,9 @@
 <?php
-$a = array(); // array vazio
-$b = array('a', 'b', 'c');
+// Esquema para criacao de um array
+// $var = array( chave =>  valor, ...);
+// chave pode ser tanto string ou um integer
+// valor pode ser qualquer tipo de valor
 
-$c = array();
-$c[0] = 'ZZZ';
-$c[1] = 'ABC';
-
-echo $b[1]; // b
-echo $c[0]; // ZZZ
-?>
+// Array ( [0] => 1 [1] => 2 )
+$ex1 = array(1,2);
+$ex2 = array(0=>1, 1=>2);
