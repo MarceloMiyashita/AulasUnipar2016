@@ -1,0 +1,17 @@
+{
+    "name": "chiquitto/mvc-pdo-smarty",
+    "authors": [
+        {
+            "name": "Alisson Chiquitto",
+            "email": "chiquitto@gmail.com"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+          "App\\": "classes/"
+      }
+    },
+    "require": {
+    	"smarty/smarty": "~3.1"
+    }
+}
