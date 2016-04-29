@@ -42,9 +42,15 @@ class CategoriaController
     }
     
     public function editarAction() {
-      $codigo = $_GET['idcategoria'];
+      if($_POST){
+          $codigo =(int) $_POST['idcategoria'];
+      }
+      else{
+       $codigo = (int) $_GET['idcategoria'];
+      }
+            
       $sql = "select categoria from categoria where idcategoria =
-          :idcategoria";
+      :idcategoria";
       $con = \App\Conexao::getInstance();
       $stmt = $con->prepare($sql);
       $stmt->bindValue(":idcategoria", $codigo);
@@ -55,10 +61,25 @@ class CategoriaController
           exit;
       }      
       
-      $valores = array(
+      if ($_POST){
+          $nomecategoria = $_POST['categoria'];
+          $valores =array(
+              "idcategoria"=>$codigo,
+              "categoria"=>$nomecategoria
+          );
+          $model = new \App\Model\Categoria();
+          $model ->editar($valores);
+          header("location:categorias.php");
+          exit;
+      }
+      else{
+         $valores = array(
           "idcategoria"=>$codigo,
           "categoria"=>$categoria['categoria']
-      );
+      ); 
+      }
+      
+      
               
       $view = \App\View::getInstance();
       $view->assign('valores', $valores);
