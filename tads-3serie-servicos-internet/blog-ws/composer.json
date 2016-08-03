@@ -1,0 +1,25 @@
+{
+    "name": "",
+    "description": "Blog WS",
+    "keywords": [],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alisson Chiquitto",
+            "email": "chiquitto@gmail.com",
+            "homepage": "http://www.chiquitto.com.br/"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Zend_": "lib/",
+            "Application_": ""
+        }
+    },
+    "include-path": [
+        "lib/"
+    ],
+    "require": {
+        "php": ">=5.5.0"
+    }
+}

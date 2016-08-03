@@ -1,0 +1,8 @@
+O gerente de um restaurante precisa de um cardápio online.
+
+Ele te procurou para desenvolver um sistema para poder cadastrar os pratos, divididos em categorias.
+
+Os cozinheiros podem cadastrar pratos.
+O gerente pode definir o preço dos pratos, e gerenciar as categorias.
+
+O sistema deve listar por categorias os produtos para o cliente. Somente os produtos com preço podem ser exibidos para o cliente.
