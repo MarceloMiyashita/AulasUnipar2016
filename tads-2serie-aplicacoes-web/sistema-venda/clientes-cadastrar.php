@@ -5,6 +5,18 @@ require './lib/funcoes.php';
 require './lib/conexao.php';
 
 $msg = array();
+
+$cliente = '';
+$email = '';
+$cpf = '';
+$idcidade = 0;
+
+if ($_POST) {
+  $cliente = $_POST['cliente'];
+  $email = $_POST['email'];
+  $cpf = $_POST['cpf'];
+  $idcidade = (int) $_POST['cidade'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -42,13 +54,13 @@ $msg = array();
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="fcliente">Cliente</label>
-                <input type="text" class="form-control" id="fcliente" name="cliente" placeholder="Nome completo">
+                <input type="text" class="form-control" id="fcliente" name="cliente" placeholder="Nome completo" value="<?php echo $cliente; ?>">
               </div>
             </div>
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="femail">Email</label>
-                <input type="text" class="form-control" id="femail" name="email">
+                <input type="text" class="form-control" id="femail" name="email" value="<?php echo $email; ?>">
               </div>
             </div>
           </div>
@@ -57,7 +69,7 @@ $msg = array();
             <div class="col-xs-6">
               <div class="form-group">
                 <label for="fcpf">CPF</label>
-                <input type="text" class="form-control" id="fcpf" name="cpf" placeholder="Somente números" maxlength="11">
+                <input type="text" class="form-control" id="fcpf" name="cpf" placeholder="Somente números" maxlength="11" value="<?php echo $cpf; ?>">
               </div>
             </div>
             <div class="col-xs-6">
@@ -65,8 +77,21 @@ $msg = array();
                 <label for="fcidade">Cidade</label>
                 <select class="form-control" id="fcidade" name="cidade">
                   <option value="">--</option>
-                  <option value="1">Cidade 1</option>
-                  <option value="2">Cidade 2</option>
+                  <?php
+                  $sql = "Select idcidade, cidade, uf From cidade Order By cidade";
+                  $resultado = mysqli_query($con, $sql);
+                  while($linha = mysqli_fetch_assoc($resultado)) {
+                  ?>
+                  <option value="<?php echo $linha['idcidade']; ?>"
+                    <?php if ($idcidade == $linha['idcidade']) { ?> selected<?php } ?>
+                    >
+                    <?php echo $linha['cidade']; ?>
+                    /
+                    <?php echo $linha['uf']; ?>
+                  </option>
+                  <?php
+                  }
+                  ?>
                 </select>
               </div>
             </div>
