@@ -16,6 +16,53 @@ if ($_POST) {
   $email = $_POST['email'];
   $cpf = $_POST['cpf'];
   $idcidade = (int) $_POST['cidade'];
+
+  if ($cliente == '') {
+    $msg[] = 'Informe o nome do cliente.';
+  }
+
+  if (!cpf($cpf)) {
+    $msg[] = 'Informe um CPF válido.';
+  } else {
+    $sql = "Select idcliente, nome
+    From cliente Where cpf = '$cpf'";
+    $resultado = mysqli_query($con, $sql);
+    $linha = mysqli_fetch_assoc($resultado);
+
+    if ($linha) {
+      $msg[] = "CPF já cadastrado para " . $linha['nome'];
+    }
+  }
+
+  if ($idcidade <= 0) {
+    $msg[] = 'Selecione uma cidade';
+  } else {
+    $sql = "Select idcidade From cidade
+    Where idcidade = $idcidade";
+    $resultado = mysqli_query($con, $sql);
+    $linha = mysqli_fetch_assoc($resultado);
+
+    if (!$linha) {
+      $msg[] = 'Cidade inexistente';
+    }
+  }
+
+  if (!$msg) {
+    $situacao = CLIENTE_ATIVO;
+    $sql = "Insert Into cliente
+    (nome, email, situacao, idcidade, cpf)
+    Values
+    ('$cliente', '$email', '$situacao', $idcidade, '$cpf')";
+
+    $resultado = mysqli_query($con, $sql);
+    $idcliente = mysqli_insert_id($con);
+
+    $url = "clientes-editar.php?idcliente=" . $idcliente;
+
+    header("location:$url");
+    exit;
+  }
+
 }
 ?>
 <!DOCTYPE html>
