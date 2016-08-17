@@ -1,14 +1,33 @@
-<?php
-$min = (int) $_GET['min'];
-$max = (int) $_GET['max'];
-$qtd = (int) $_GET['qtd'];
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Formulário</title>
+</head>
+<body>
 
-$numeros = array();
+  <h1>Aleatório</h1>
 
-for ($i = 0; $i < $qtd; $i++) {
-  $numeros[] = mt_rand($min, $max);
-}
+  <form name="form1" action="" method="POST">
 
-echo json_encode(array(
-  'numeros' => $numeros
-));
+    <p>
+      Número mínimo:
+      <input name="min" type="number" />
+    </p>
+
+    <p>
+      Número máximo:
+      <input name="max" type="number" />
+    </p>
+
+    <p>
+      <input type="submit" value="Calcular" />
+    </p>
+  </form>
+
+  <div id="saida">
+
+  </div>
+
+</body>
+</html>
