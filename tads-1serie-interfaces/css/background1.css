@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: Verdana;
+}
+
+body {
+  /*background-color: #0000ff;
+  background-image: url(img/bg2.jpg);
+  background-repeat: no-repeat;
+  background-position: 50px 100px;
+  background-attachment: fixed;
+  background-size: contain;*/
+
+  /*background: #0000ff url(img/bg2.jpg) left top/auto repeat content-box content-box scroll;*/
+}
+
+h1 {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.erro, .aviso, .ok {
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 20px 20px 20px 4.5em;
+  color: rgba(0, 0, 0, 0.8);
+  background-repeat: no-repeat;
+  background-size: 2.5em 2.5em;
+  background-position: 1em center;
+}
+
+.ok {
+  background-color: rgb(180, 255, 180);
+  background-image: url(img/ok.png);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/

@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  /*background-color: #ff00ff;
+  background-image: url(img/bg3.jpg);
+  background-repeat: no-repeat;
+  background-position: 50% 50px;
+  background-attachment: fixed;
+  background-size: cover;
+
+  background: #ff00ff url(img/bg3.jpg) center center/cover no-repeat border-box border-box scroll;*/
+}
+
+h1 {
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url(img/bg1.jpg);
+  background-repeat: no-repeat;
+
+  border: 20px solid transparent;
+  background-origin: content-box;
+}
+
+.erro, .aviso, .ok {
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.7);
+  margin: 20px;
+  border-radius: 5px;
+  padding: 20px 20px 20px 5em;
+  background-repeat: no-repeat;
+  background-size: 3em 3em;
+  background-position: 1em center;
+}
+
+.erro {
+  background-color: rgb(255, 180, 180);
+  background-image: url(img/erro.png);
+}
+.aviso {
+  background-color: rgb(255, 255, 200);
+}
+.ok {
+  background-color: rgb(190, 255, 190);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
