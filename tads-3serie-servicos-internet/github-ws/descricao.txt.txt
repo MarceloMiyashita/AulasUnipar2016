@@ -1,0 +1,7 @@
+BASE: https://api.github.com
+
+https://developer.github.com/v3/users/#get-a-single-user
+https://developer.github.com/v3/repos/#list-user-repositories
+https://developer.github.com/v3/repos/#get
+https://developer.github.com/v3/search/#search-repositories
+https://developer.github.com/v3/search/#search-users
