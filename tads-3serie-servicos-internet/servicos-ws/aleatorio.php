@@ -26,8 +26,28 @@
   </form>
 
   <div id="saida">
-    
-  </div>
+    <?php
+    if ($_POST) {
+      $min = (int) $_POST['min'];
+      $max = (int) $_POST['max'];
 
+      $url = "http://127.0.0.1:8887/servicos-ws/aleatorio-ws.php";
+
+      $parametros = http_build_query(array(
+        'min' => $min,
+        'max' => $max
+      ));
+      $url .= "?" . $parametros;
+
+      $retorno = file_get_contents($url);
+      $dados = json_decode($retorno, true);
+
+      ?>
+      O valor aleatório é <?php echo $dados['numero']; ?>
+      <?php
+    }
+    ?>
+  </div>
+  
 </body>
 </html>
