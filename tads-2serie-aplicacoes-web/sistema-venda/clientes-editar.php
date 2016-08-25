@@ -6,7 +6,11 @@ require './lib/conexao.php';
 
 $msg = array();
 
-$idcliente = (int) $_GET['idcliente'];
+if ($_POST) {
+  $idcliente = (int) $_POST['idcliente'];
+} else {
+  $idcliente = (int) $_GET['idcliente'];
+}
 
 $sql = "Select
   nome, email, situacao, idcidade, cpf
@@ -20,11 +24,62 @@ if (!$linha) {
   exit;
 }
 
-$cliente = $linha['nome'];
-$email = $linha['email'];
-$situacao = $linha['situacao'];
-$idcidade = $linha['idcidade'];
-$cpf = $linha['cpf'];
+if ($_POST) {
+  $cliente = $_POST['cliente'];
+  $email = $_POST['email'];
+
+  if (isset($_POST['ativo'])) {
+    $situacao = CLIENTE_ATIVO;
+  } else {
+    $situacao = CLIENTE_INATIVO;
+  }
+
+  $idcidade = $_POST['cidade'];
+  $cpf = $_POST['cpf'];
+
+  if ($cliente == '') {
+    $msg[] = 'Informe o nome completo';
+  }
+
+  if ($email == '') {
+    $msg[] = 'Informe o endereço de email';
+  } else {
+    $sql = "Select idcliente From cliente
+    Where (email = '$email') And (idcliente != $idcliente)";
+    $resultado = mysqli_query($con, $sql);
+    $linha = mysqli_fetch_assoc($resultado);
+
+    if ($linha) {
+      $msg[] = 'Email já existe pra outro cliente';
+    }
+  }
+
+  if (!$msg) {
+    $sql = "Update cliente Set
+    nome = '$cliente',
+    email = '$email',
+    situacao = '$situacao',
+    idcidade = $idcidade,
+    cpf = '$cpf'
+    Where idcliente = $idcliente";
+
+    $resultado = mysqli_query($con, $sql);
+
+    //header("location:clientes.php");
+    //exit;
+
+    $mensagem = "Registro salvo";
+    $url = "clientes.php";
+    javascriptAlertFim($mensagem, $url);
+  }
+
+} else {
+  $cliente = $linha['nome'];
+  $email = $linha['email'];
+  $situacao = $linha['situacao'];
+  $idcidade = $linha['idcidade'];
+  $cpf = $linha['cpf'];
+}
 
 ?>
 <!DOCTYPE html>
