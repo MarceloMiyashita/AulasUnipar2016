@@ -1,0 +1,28 @@
+Passo 1:
+
+Criar 2 serviços:
+
+. Calculadora de notas.
+Na Unipar, para um aluno ser aprovado ele precisa alçancar uma média 6.0, de 4 notas bimestrais.
+A cada semestre existe uma prova substitutiva que poderá substituir a menor nota do semestre.
+Ao final do ano, são consideradas as 2 maiores notas de cada semestre para o calculo da média final.
+Criar uma calculadora que recebe as 3 notas do primeiro semestre, e retorna as notas que o aluno deve tirar no 3º e 4º bimestre.
+
+. Calculadora de peso ideal de acordo com o IMC.
+O Índice de Massa Corporal (IMC) é o padrão pelo qual você pode ver se seus níveis de gordura e peso estão dentro do recomendado pela Organização Mundial de Saúde.
+A fórmula é simples: chega-se ao resultado dividindo o peso da pessoa em quilos pela altura em centímetros, elevada ao quadrado.
+De acordo com a tabela, criar um serviço que calcula o IMC atual do usuário. O serviço deve retornar o IMC do usuário, juntamente com o peso ideal para a altura dele.
+
+Abaixo de 18,5 = abaixo do peso ideal
+Entre 18,5 e 24,9 = peso ideal
+Entre 25,0 e 29,9 = sobrepeso
+Entre 30,0 e 34,9 = obesidade grau I
+Entre 35,0 e 39,9 = obesidade grau II
+Entre 40 e acima = obesidade grau III
+
+Passo 2:
+Criar as telas para os serviços criados.
+
+Fazer em duplas.
+Nota: 0,5 para cada atividade que funcionar sem erros
+Entregar até: 22:20hrs
