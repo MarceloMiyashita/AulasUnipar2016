@@ -6,7 +6,7 @@ define('DIRETORIO_SLIM', realpath(DIRETORIO . '/../Slim'));
 
 define('DIRETORIO_AUTOLOAD', DIRETORIO . '/lib');
 
-define('DIRETORIO_DATA', DIRETORIO . '/data');
+define('DIRETORIO_DATA', realpath(DIRETORIO . '/../data'));
 
 /**
  * Auto load de classes
