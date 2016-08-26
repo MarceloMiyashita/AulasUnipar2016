@@ -4,3 +4,77 @@
 	padding: 0;
 	font-family: verdana;
 }
+
+#tudo {
+	width: 100vw;
+	max-width: 360px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#corpo, #rodape {
+	display: none;
+}
+
+#topo {
+	width: 100%;
+	height: 200px;
+	background-image: url(../img/topo.png);
+	background-position: center top;
+	position: relative;
+}
+
+#nav {
+	background-color: rgba(17, 17, 17, 0.8);
+	width: 100%;
+	height: 2.67em;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	font-size: 15px;
+}
+
+#nav > li {
+	width: 25%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	list-style: none;
+}
+#nav > li:nth-child(2) {
+	left: 25%;
+}
+#nav > li:nth-child(3) {
+	left: 50%;
+}
+#nav > li:nth-child(4) {
+	left: 75%;
+}
+
+#nav > li > a {
+	color: #FFFFFF;
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	height: 100%;
+	line-height: 2.67em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
