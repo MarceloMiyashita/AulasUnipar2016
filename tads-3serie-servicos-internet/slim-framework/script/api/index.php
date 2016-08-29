@@ -41,8 +41,58 @@ $app->get('/estados', function () use ($app) {
   saida($saida);
 });
 
-$app->get('/cidades/:iduf', function () use ($app) {
+$app->get('/cidades/:iduf', function ($iduf) use ($app) {
+  $sql = "Select idcidade, cidade
+      From cidade
+      Where (iduf = $iduf)";
   
+  $con = Conexao::getInstance();
+  $consulta = $con->query($sql);
+  
+  $saida = array();
+  while($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+      $linha['idcidade'] = (int) $linha['idcidade'];
+      $saida[] = $linha;
+  }
+  
+  saida($saida);
+});
+
+// Metodo que recebe uma string e faz uma busca pelo nome da cidade,
+// e retorna a lista das cidades encontradas
+$app->get('/buscacidades/:nome', function($nome) {
+    $sql = "Select idcidade, iduf, cidade From cidade
+        Where (cidade LIKE '%$nome%')";
+    
+    $con = Conexao::getInstance();
+    $consulta = $con->query($sql);
+    
+    $dados = array();
+    while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+        $linha['idcidade'] = (int) $linha['idcidade'];
+        $linha['iduf'] = (int) $linha['iduf'];
+        $dados[] = $linha;
+    }
+    saida($dados);
+});
+
+$app->get('/buscacidades/uf/:uf', function($uf) {
+    $sql = "Select
+    c.idcidade, c.iduf, c.cidade
+From cidade c
+Inner Join uf u On u.iduf = c.iduf
+Where u.uf = '$uf'";
+    
+    $con = Conexao::getInstance();
+    $consulta = $con->query($sql);
+    
+    $dados = array();
+    while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+        $linha['idcidade'] = (int) $linha['idcidade'];
+        $linha['iduf'] = (int) $linha['iduf'];
+        $dados[] = $linha;
+    }
+    saida($dados);
 });
 
 $app->run();

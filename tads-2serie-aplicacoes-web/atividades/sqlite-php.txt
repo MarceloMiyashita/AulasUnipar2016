@@ -1,0 +1,22 @@
+Criar um hotsite, com informações entre a integração PHP e SQLite.
+
+O hotsite deve conter as páginas:
+. Index (Pagina inicial)
+. Ferramentas
+. Conexão com PHP
+. Execução de Queries Select (com scripts de exemplo)
+. Execução de Queries Insert (com scripts de exemplo)
+. Execução de Queries Update (com scripts de exemplo)
+. Execução de Queries Delete (com scripts de exemplo)
+. Página com informações dos alunos
+
+===
+
+Informações para a realizacao da atividade:
+Valor: até 2,0 pontos, distribuidos da seguinte forma:
+        - 1,5 pontos para o conteúdo;
+        - 0,5 pontos para o hotsite;
+
+Fazer em até 4 integrantes
+Entregar via email chiquitto+2ano2016sqlite@unipar.br
+Data de entrega: até 12/09 as 19:00hrs
