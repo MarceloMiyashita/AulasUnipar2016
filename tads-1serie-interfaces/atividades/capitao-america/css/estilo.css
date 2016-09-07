@@ -12,8 +12,9 @@
 	margin-right: auto;
 }
 
-#corpo, #rodape {
-	display: none;
+#corpo {
+	width: 100%;
+	padding: 10px;
 }
 
 #topo {
@@ -22,6 +23,16 @@
 	background-image: url(../img/topo.png);
 	background-position: center top;
 	position: relative;
+	padding-top: 30px;
+}
+
+#logo {
+	width: 55%;
+	margin-left: auto;
+	margin-right: auto;
+}
+#logo img {
+	width: 100%;
 }
 
 #nav {
@@ -62,8 +73,62 @@
 	line-height: 2.67em;
 }
 
+#rodape {
+	width: 100%;
+	background-color: #444444;
+	background-image: url(../img/rodape.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	position: relative;
+	height: 130px;
+}
 
+#marca {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	width: 160px;
+	text-align: right;
+	color: #FFFFFF;
+	font-size: 10px;
+}
 
+#links {
+	width: 86px;
+	height: 80px;
+	position: absolute;
+	right: 10px;
+	bottom: 42px;
+}
+
+#links img {
+	display: block;
+}
+
+#links > li {
+	list-style: none;
+	position: absolute;
+}
+
+#links > li:nth-child(1) {
+	bottom: 0;
+	right: 0;
+}
+
+#links > li:nth-child(2) {
+	right: 0;
+	top: 0;
+}
+
+#links > li:nth-child(3) {
+	left: 0;
+	top: 0;
+}
+
+#links > li:nth-child(4) {
+	left: 0;
+	bottom: 0;
+}
 
 
 

@@ -1,0 +1,18 @@
+#corpo {
+  padding-bottom: 0;
+}
+
+.box {
+  border: 10px solid #4F718A;
+  width: 100%;
+  position: relative;
+  margin-bottom: 10px;
+}
+.box a, .box img {
+  display: block;
+  width: 100%;
+}
+.box p {
+  position: absolute;
+  bottom: 0;
+}

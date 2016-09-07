@@ -95,5 +95,81 @@ Where u.uf = '$uf'";
     saida($dados);
 });
 
+$app->post('/uf', function(){
+    $app = \Slim\Slim::getInstance();
+    
+    $uf = $app->request->params('uf');
+    
+    $sql = "Insert Into uf (uf) Values (:uf)";
+    
+    $con = Conexao::getInstance();
+    
+    $preparado = $con->prepare($sql);
+    $preparado->bindValue(':uf', $uf);
+    
+    if (!$preparado->execute()) {
+        saida(array(
+            'uf' => $uf
+        ), 1);
+    }
+    
+    $sql = "Select iduf, uf From uf Where iduf = :iduf";
+    
+    $iduf = (int) $con->lastInsertId();
+    
+    $preparado = $con->prepare($sql);
+    $preparado->bindValue(':iduf', $iduf);
+    $preparado->execute();
+    
+    $saida = $preparado->fetch(PDO::FETCH_ASSOC);
+    
+    saida($saida);
+});
+
+$app->post('/cidade', function() {
+    $app = \Slim\Slim::getInstance();
+    $con = Conexao::getInstance();
+    
+    $cidade = $app->request->params('cidade');
+    $iduf = (int) $app->request->params('iduf');
+    
+    $sql = "Insert Into cidade (iduf, cidade) Values
+        (:iduf, :cidade)";
+    
+    $preparado = $con->prepare($sql);
+    $preparado->bindValue(':iduf', $iduf);
+    $preparado->bindValue(':cidade', $cidade);
+    
+    try {
+        $preparado->execute();
+    } catch (Exception $exc) {
+        saida($app->request->params(), 2);
+        return;
+    }
+    
+    $idcidade = (int) $con->lastInsertId();
+    
+    $sql = "Select idcidade, iduf, cidade From cidade
+        Where idcidade = :idcidade";
+    
+    $preparado = $con->prepare($sql);
+    $preparado->bindValue(':idcidade', $idcidade);
+    $preparado->execute();
+    
+    $saida = $preparado->fetch(PDO::FETCH_ASSOC);
+    
+    saida($saida);
+});
+
 $app->run();
 sleep(1);
+
+
+
+
+
+
+
+
+
+

@@ -13,8 +13,8 @@ O hotsite deve conter as páginas:
 ===
 
 Informações para a realizacao da atividade:
-Valor: até 2,0 pontos, distribuidos da seguinte forma:
-        - 1,5 pontos para o conteúdo;
+Valor: até 1,5 pontos, distribuidos da seguinte forma:
+        - 1,0 pontos para o conteúdo;
         - 0,5 pontos para o hotsite;
 
 Fazer em até 4 integrantes
