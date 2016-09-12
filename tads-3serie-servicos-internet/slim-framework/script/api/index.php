@@ -161,6 +161,49 @@ $app->post('/cidade', function() {
     saida($saida);
 });
 
+$app->post('/uf/:iduf', function($iduf) {
+    $sql = "Select iduf From uf Where iduf = :iduf";
+    
+    $con = Conexao::getInstance();
+    
+    $preparado = $con->prepare($sql);
+    $preparado->bindValue(':iduf', $iduf);
+    $preparado->execute();
+    
+    $uf = $preparado->fetch();
+    if (!$uf) {
+        saida(array(), 3, 404);
+    }
+    
+    $app = \Slim\Slim::getInstance();
+    
+    $uf = $app->request->params('uf');
+    
+    $sql = "Update uf Set uf = :uf
+        Where iduf = :iduf";
+    $preparado = $con->prepare($sql);
+    $preparado->bindValue(':iduf', $iduf);
+    $preparado->bindValue(':uf', $uf);
+    
+    try {
+        $preparado->execute();
+    } catch (Exception $exc) {
+        saida($app->request->params(), 4);
+    }
+    
+    $sql = "Select uf From uf Where iduf = :iduf";
+    $preparado = $con->prepare($sql);
+    $preparado->bindValue(':iduf', $iduf);
+    $preparado->execute();
+    
+    $ufLinha = $preparado->fetch(PDO::FETCH_ASSOC);
+    
+    saida(array(
+        'iduf' => $iduf,
+        'uf' => $ufLinha['uf']
+    ));
+});
+
 $app->run();
 sleep(1);
 
