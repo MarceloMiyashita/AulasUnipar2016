@@ -5,25 +5,26 @@ require './config.php';
 require './lib/conexao.php';
 require './lib/funcoes.php';
 
-$idcliente = (int) $_GET['idcliente'];
-
-/*$sql = "Select idvenda From venda
-Where idcliente = $idcliente";
-$consulta = mysqli_query($con, $sql);
-$venda = mysqli_fetch_assoc($consulta);
-if ($venda) {
-  javascriptAlertFim("Cliente não pode ser apagado porque possui vendas", "clientes.php");
-}*/
-
-$sql = "Select Count(*) contador
-From venda Where idcliente = $idcliente";
-$consulta = mysqli_query($con, $sql);
-$linha = mysqli_fetch_assoc($consulta);
-if ($linha['contador'] > 0) {
-  javascriptAlertFim("Cliente não pode ser apagado porque possui vendas", "clientes.php");
+if(isset($_GET['idcliente'])){
+    $idcliente= (int) $_GET['idcliente'];
 }
+else{
+    echo 'Código invalido';
+    exit;
+}
+$sql = "delete from cliente where idcliente = $idcliente";
+$deletar = mysqli_query($con, $sql);
 
-$sql = "Delete From cliente Where idcliente = $idcliente";
-mysqli_query($con, $sql);
+if(mysqli_affected_rows($con)==1){
+    $msg = "Registro $idcliente eliminado" ;
+}
+else{
+    $msg = 'Registro não encontrado';
+}
+$url = 'clientes.php';
 
-javascriptAlertFim("Registro apagado", "clientes.php");
+javaScriptAlertFim($msg, $url);
+?>
+
+
+

@@ -2,6 +2,11 @@
 
 require './config.php';
 require './lib/funcoes.php';
+require './lib/conexao.php';
+
+if($_POST){
+
+}
 
 ?>
 <!DOCTYPE html>

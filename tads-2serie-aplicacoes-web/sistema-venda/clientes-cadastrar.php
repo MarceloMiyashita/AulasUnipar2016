@@ -1,4 +1,5 @@
 <?php
+
 require './protege.php';
 require './config.php';
 require './lib/funcoes.php';
@@ -6,157 +7,98 @@ require './lib/conexao.php';
 
 $msg = array();
 
-$cliente = '';
+$nome = '';
 $email = '';
-$cpf = '';
-$idcidade = 0;
+$ativo = CLIENTE_ATIVO;
 
 if ($_POST) {
-  $cliente = $_POST['cliente'];
+  $nome = $_POST['nome'];
   $email = $_POST['email'];
-  $cpf = $_POST['cpf'];
-  $idcidade = (int) $_POST['cidade'];
 
-  if ($cliente == '') {
-    $msg[] = 'Informe o nome do cliente.';
+  if (!isset($_POST['ativo'])) {
+    $ativo = CLIENTE_INATIVO;
   }
 
-  if (!cpf($cpf)) {
-    $msg[] = 'Informe um CPF válido.';
-  } else {
-    $sql = "Select idcliente, nome
-    From cliente Where cpf = '$cpf'";
-    $resultado = mysqli_query($con, $sql);
-    $linha = mysqli_fetch_assoc($resultado);
-
-    if ($linha) {
-      $msg[] = "CPF já cadastrado para " . $linha['nome'];
-    }
+  // Validar informacoes
+  if ($nome == '') {
+    $msg[] = 'Informe o nome completo';
   }
-
-  if ($idcidade <= 0) {
-    $msg[] = 'Selecione uma cidade';
-  } else {
-    $sql = "Select idcidade From cidade
-    Where idcidade = $idcidade";
-    $resultado = mysqli_query($con, $sql);
-    $linha = mysqli_fetch_assoc($resultado);
-
-    if (!$linha) {
-      $msg[] = 'Cidade inexistente';
-    }
+  if ($email == '') {
+    $msg[] = 'Informe um endereço de email';
   }
 
   if (!$msg) {
-    $situacao = CLIENTE_ATIVO;
-    $sql = "Insert Into cliente
-    (nome, email, situacao, idcidade, cpf)
-    Values
-    ('$cliente', '$email', '$situacao', $idcidade, '$cpf')";
+    // Salvar informacoes
+    $sql = "Insert into cliente
+    (nome, email, ativo) Values
+    ('$nome', '$email', '$ativo')";
 
-    $resultado = mysqli_query($con, $sql);
-    $idcliente = mysqli_insert_id($con);
+    $r = mysqli_query($con, $sql);
 
-    $url = "clientes-editar.php?idcliente=" . $idcliente;
+    if (!$r) {
+      $msg[] = 'Erro para inserir o registro';
+      $msg[] = mysqli_error($con);
+    }
+    else {
+      $idcliente = mysqli_insert_id($con);
 
-    header("location:$url");
-    exit;
+      $url = 'clientes-editar.php?idcliente=' . $idcliente;
+      $msg = "Cliente $idcliente criado.";
+
+      javascriptAlertFim($msg, $url);
+    }
   }
-
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cadastrar cliente</title>
+    <title>Cadastrar clientes</title>
 
     <?php headCss(); ?>
   </head>
   <body>
 
-    <?php include 'nav.php'; ?>
+<?php include 'nav.php'; ?>
 
-    <div class="container">
+<div class="container">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="page-header">
-            <h1><i class="fa fa-heart"></i> Cadastrar cliente</h1>
-          </div>
-        </div>
-      </div>
+<div class="page-header">
+  <h1><i class="fa fa-heart"></i> Cadastrar clientes</h1>
+</div>
 
-      <?php
-      if ($msg) {
-          msgHtml($msg);
-      }
-      ?>
+<?php if ($msg) { msgHtml($msg); } ?>
 
-      <form class="row" role="form" method="post" action="clientes-cadastrar.php">
-        <div class="col-xs-12">
+<form role="form" method="post" action="clientes-cadastrar.php">
+  <div class="form-group">
+    <label for="fnome">Nome</label>
+    <input type="text" class="form-control" id="fnome" name="nome" placeholder="Nome completo" value="<?php echo $nome; ?>">
+  </div>
+  <div class="form-group">
+    <label for="femail">Email</label>
+    <input type="email" class="form-control" id="femail" name="email" placeholder="email@email.com" value="<?php echo $email; ?>">
+  </div>
+  <div class="form-group">
+    <label for="ffoto">Foto do cliente</label>
+    <input type="file" id="ffoto" name="foto">
+    <p class="help-block">Somente foto em JPG.</p>
+  </div>
+  <div class="checkbox">
+    <label for="fativo">
+      <input type="checkbox" name="ativo" id="fativo"<?php if ($ativo == CLIENTE_ATIVO) { ?> checked<?php } ?>> Cliente ativo
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+  <button type="reset" class="btn btn-danger">Cancelar</button>
+</form>
 
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="fcliente">Cliente</label>
-                <input type="text" class="form-control" id="fcliente" name="cliente" placeholder="Nome completo" value="<?php echo $cliente; ?>">
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="femail">Email</label>
-                <input type="text" class="form-control" id="femail" name="email" value="<?php echo $email; ?>">
-              </div>
-            </div>
-          </div>
+</div>
 
-          <div class="row">
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="fcpf">CPF</label>
-                <input type="text" class="form-control" id="fcpf" name="cpf" placeholder="Somente números" maxlength="11" value="<?php echo $cpf; ?>">
-              </div>
-            </div>
-            <div class="col-xs-6">
-              <div class="form-group">
-                <label for="fcidade">Cidade</label>
-                <select class="form-control" id="fcidade" name="cidade">
-                  <option value="">--</option>
-                  <?php
-                  $sql = "Select idcidade, cidade, uf From cidade Order By cidade";
-                  $resultado = mysqli_query($con, $sql);
-                  while($linha = mysqli_fetch_assoc($resultado)) {
-                  ?>
-                  <option value="<?php echo $linha['idcidade']; ?>"
-                    <?php if ($idcidade == $linha['idcidade']) { ?> selected<?php } ?>
-                    >
-                    <?php echo $linha['cidade']; ?>
-                    /
-                    <?php echo $linha['uf']; ?>
-                  </option>
-                  <?php
-                  }
-                  ?>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-12">
-              <button type="submit" class="btn btn-primary">Salvar</button>
-              <button type="reset" class="btn btn-danger">Cancelar</button>
-            </div>
-          </div>
-        </div>
-      </form>
-
-    </div>
-
-    <script src="./lib/jquery.js"></script>
-    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/jquery.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 
   </body>
 </html>

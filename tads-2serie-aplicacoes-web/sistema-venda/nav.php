@@ -21,9 +21,6 @@
             <li class="divider"></li>
             <li><a href="usuarios-cadastrar.php">Cadastrar Usuários</a></li>
             <li><a href="usuarios.php">Pesquisar Usuários</a></li>
-            <li class="divider"></li>
-            <li><a href="cidades-cadastrar.php">Cadastrar Cidades</a></li>
-            <li><a href="cidades.php">Pesquisar Cidades</a></li>
           </ul>
         </li>
         <li class="dropdown">

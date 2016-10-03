@@ -1,8 +1,10 @@
 <?php
+
 require './protege.php';
 require './config.php';
 require './lib/funcoes.php';
 require './lib/conexao.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,61 +17,43 @@ require './lib/conexao.php';
   </head>
   <body>
 
-    <?php include 'nav.php'; ?>
+<?php include 'nav.php'; ?>
 
-    <div class="container">
+<div class="container">
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="page-header">
-            <h1><i class="fa fa-reorder"></i> Compras - Valor de venda x Valor pago</h1>
-          </div>
-        </div>
-      </div>
+<div class="page-header">
+  <h1><i class="fa fa-reorder"></i> Compras - Valor de venda x Valor pago</h1>
+</div>
 
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="panel panel-default">
-            <table class="table table-striped table-hover">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Cliente</th>
-                  <th>Data</th>
-                  <th>Valor de venda</th>
-                  <th>Valor pago</th>
-                  <th>Diferença</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{idvenda}</td>
-                  <td>{clienteNome}</td>
-                  <td>{vendaData}</td>
-                  <td>{valorVenda}</td>
-                  <td>{valorPago}</td>
-                  <td>{vendaDifValores}</td>
-                </tr>
-              </tbody>
-              <tfoot>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td>Total:</td>
-                  <td>{valorVenda}</td>
-                  <td>{valorPago}</td>
-                  <td>{vendaDifValores}</td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>
-        </div>
-      </div>
+<div class="panel panel-default">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Cliente</th>
+        <th>Data</th>
+        <th>Valor de venda</th>
+        <th>Valor pago</th>
+        <th>Diferença</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{IDVENDA}}</td>
+        <td>{{CLIENTE_NOME}}</td>
+        <td>{{VENDA_DATA}}</td>
+        <td>{{VENDA_VALOR}}</td>
+        <td>{{VENDA_VALOR_PAGO}}</td>
+        <td>{{DIFERENCA}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-    </div>
+</div>
 
-    <script src="./lib/jquery.js"></script>
-    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/jquery.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 
   </body>
 </html>
