@@ -1,0 +1,21 @@
+* {
+    font-family: Verdana, Arial, sans-serif;
+}
+
+#idSpan {
+  border: 1px solid #000000;
+  padding: 10px;
+  position: fixed;
+  top: 50px;
+  left: 200px;
+  display: none;
+  background: black;
+  color: white;
+}
+
+
+
+
+
+
+/**/
