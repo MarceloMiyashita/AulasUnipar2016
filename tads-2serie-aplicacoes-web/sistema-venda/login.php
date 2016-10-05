@@ -5,7 +5,24 @@ require './lib/funcoes.php';
 require './lib/conexao.php';
 
 if($_POST){
+  $email = $_POST['email'];
+  $senha = $_POST['senha'];
+  $status = USUARIO_ATIVO;
 
+  $sql = "Select idusuario, nome From usuario
+  Where (email = '$email')
+  and (senha = '$senha')
+  and (status = $status)";
+  $resultado = mysqli_query($con, $sql);
+  $usuario = mysqli_fetch_assoc($resultado);
+
+  if ($usuario) {
+    session_start();
+    $_SESSION['idusuario'] = $usuario['idusuario'];
+    $_SESSION['nome'] = $usuario['nome'];
+    header('location:index.php');
+    exit;
+  }
 }
 
 ?>
@@ -17,7 +34,7 @@ if($_POST){
     <title>TecInfo Unipar</title>
 
     <?php headCss(); ?>
-    
+
     <style type="text/css">
         body {
             padding-top: 40px;
@@ -27,7 +44,7 @@ if($_POST){
           .container {
             max-width: 330px;
           }
-      
+
           form { margin-bottom: 15px; }
     </style>
   </head>
@@ -53,10 +70,10 @@ if($_POST){
 
             <button type="submit" class="btn btn-primary btn-block">Fazer login</button>
           </form>
-          
+
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-xs-12">
           <div class="alert alert-info" role="alert">

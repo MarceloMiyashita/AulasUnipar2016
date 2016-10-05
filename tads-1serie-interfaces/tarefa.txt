@@ -1,0 +1,10 @@
+Criar um algoritmo em Javascript que faça o calculo do IMC, e mostrar se o usuario esta abaixo do peso, peso ideal ou acima do peso.
+=============
+Criar um algoritmo que calcula a nota de acordo com as regras da Unipar.
+Com base em 4 variaveis, calcular média aritmética, e mostrar se o aluno esta aprovado ou não.
+==============
+Escreva um código que calcule a soma de 1 até 100. (obs: a resposta é 5050)
+==============
+Crie um Array igual ao abaixo e mostre apenas os nomes das pessoas que tenham 4 letras.
+var pessoas = ["João", "José", "Maria", "Sebastião", "Antônio"];
+Dica: variavel.length calcula o comprimeto da variavel string.
