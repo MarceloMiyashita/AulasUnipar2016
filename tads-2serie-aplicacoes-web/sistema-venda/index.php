@@ -24,7 +24,7 @@ require './lib/conexao.php';
 <div class="jumbotron">
   <div class="container">
     <h1>TecInfo Unipar</h1>
-    <p>Bem vindo Alisson Chiquitto</p>
+    <p>Bem vindo <?php echo $_SESSION['nome']; ?></p>
     <p>
       <div class="btn-group">
         <a class="btn btn-primary btn-lg" role="button" href="clientes.php">

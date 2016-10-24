@@ -35,20 +35,22 @@ if ($_POST) {
     if ($senha == '') {
         $msg[] = "Insira uma senha";
     }
-    
+
     if ($senha != $senha2){
         $msg[] = "As senhas não coferem digite novamente";
     }
 
     $sql = "select idusuario from usuario where email = '$email'";
     $consulta = mysqli_query($con, $sql);
-    
+
     $resultado = mysqli_fetch_assoc($consulta);
     if($resultado){
         $msg[] = "Este email ja esta cadastrado.";
     }
-    
+
     if (!$msg) {
+        $senha = md5('0409' . $senha);
+
         $sql = "Insert Into usuario (nome,email,senha,status) Values ('$nome', '$email', '$senha', $status)";
 
         $resultado = mysqli_query($con, $sql);
@@ -98,7 +100,7 @@ if ($_POST) {
                     <label for="femail">Email</label>
                     <input type="email" class="form-control" id="femail" name="email" placeholder="Endereço de email" value="<?php echo $email; ?>">
                 </div>
-                
+
                 <div class="row">
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="fsenha">Senha</label>

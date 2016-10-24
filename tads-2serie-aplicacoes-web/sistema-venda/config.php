@@ -12,7 +12,7 @@ define('TWITTER_BOOTSTRAP_TEMA', 'journal');
 
 define('BD_HOST', 'localhost');
 define('BD_USUARIO', 'root');
-define('BD_SENHA', 'vagrant');
+define('BD_SENHA', '');
 define('BD_NOME', 'vendas');
 
 define('CATEGORIA_INATIVO', '0');

@@ -9,6 +9,9 @@ if($_POST){
   $senha = $_POST['senha'];
   $status = USUARIO_ATIVO;
 
+  $senha = "0409" . $senha;
+  $senha = md5($senha);
+
   $sql = "Select idusuario, nome From usuario
   Where (email = '$email')
   and (senha = '$senha')

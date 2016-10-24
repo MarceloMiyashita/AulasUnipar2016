@@ -27,15 +27,17 @@ if (!$retorno) {
 if ($_POST) {
     $senha = trim($_POST['senha']);
     $senha2 = trim($_POST['senha2']);
-    
+
     if ($senha == '') {
         $msg[] = "Insira uma senha para o usuário";
     }
     if ($senha != $senha2){
         $msg[] = "As senhas não coferem digite novamente";
     }
-    
+
     if (!$msg) {
+        $senha = md5('0409' . $senha);
+
         $sql = "Update usuario set senha = '$senha' where idusuario = $idusuario";
         $gravou = mysqli_query($con, $sql);
         if ($gravou) {
@@ -69,7 +71,7 @@ if ($_POST) {
             <?php if ($msg) { msgHtml($msg); } ?>
 
             <form role="form" method="post" action="usuarios-senha.php">
-        <input type="hidden" name="idusuario" value="<?php echo $idusuario; ?>">   
+        <input type="hidden" name="idusuario" value="<?php echo $idusuario; ?>">
                 <div class="row">
                     <div class="form-group col-sm-6 col-xs-6">
                         <label for="fsenha">Senha</label>
