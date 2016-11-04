@@ -4,6 +4,41 @@
 	padding: 0;
 }
 
+#telaJogo, #telaFinal {
+	display: none;
+}
+
+#pQtdCarros {
+	font-size: 20px;
+	text-align: center;
+}
+#pQtdCarros input {
+	font-size: inherit;
+	text-align: center;
+	width: 50px;
+}
+#telaStart ul {
+	border: 5px solid blue;
+	overflow: auto;
+	margin: 20px 50px;
+}
+#telaStart li {
+	display: block;
+	float: left;
+	padding: 5px;
+	width: 20%;
+}
+#telaStart li:hover {
+	background: blue;
+}
+#telaStart input[type=radio] {
+	display: none;
+}
+#telaStart img {
+	display: block;
+	width: 100%;
+}
+
 h1 {
 	font: 40px Arial;
 	margin: 1em auto;
@@ -38,7 +73,12 @@ h1 {
 	top: 0;
 }
 
-#iniciarJogo {
+#telaFinal p {
+	font-size: 30px;
+	text-align: center;
+}
+
+.botao {
 	background: url(../img/start.png) no-repeat 10px center;
 	background-size: 30px 30px;
 	border: 3px solid #9F3;

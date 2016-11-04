@@ -16,13 +16,28 @@
 
 	<h1>Jogo de corrida</h1>
 
-    <section id="tela-jogo">
-  		<ul id="jogo">
-  			<li><img src="img/img8.png"></li>
-  		</ul>
+    <section id="telaStart">
+      <p id="pQtdCarros">Quantidade de carros:
+        <input type="number" id="qtdCarros" value="3" /></p>
 
-  		<button id="iniciarJogo">Iniciar jogo</button>
+      <ul>
+        <li><label for="modelo1"><input type="radio" name="modelo" id="modelo1" value="1" /><img src="img/img1.png" /></label></li>
+      </ul>
+
+      <button class="botao" id="confirmar">Confirmar</button>
+    </section>
+
+    <section id="telaJogo">
+  		<ul id="jogo"></ul>
+
+  		<button class="botao" id="iniciarJogo">Iniciar jogo</button>
 	</section>
+
+  <section id="telaFinal">
+    <p>Vencedor 1 venceu!</p>
+
+    <button class="botao" id="novamente">Jogar novamente</button>
+  </section>
 
   </body>
 
