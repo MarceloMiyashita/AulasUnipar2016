@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Pokedex</title>
+
+    <link rel="stylesheet" type="text/css" href="./lib/pokeapi.css">
+
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/pokeapi.js"></script>
+  </head>
+  <body>
+
+    <div id="loading"></div>
+
+    <div id="container">
+      <form>
+        <label>Número:</label>
+        <input type="number" name="numero" id="fnumero" />
+        <button id="botao">Pesquisar</button>
+      </form>
+
+      <div id="saida">
+        <p id="nome">#1 - Bulbasaur</p>
+        <div id="imgs">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" />
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/1.png" />
+        </div>
+        <p id="tipos">Tipos: <span>Grama</span> - <span>Veneno</span></p>
+      </div>
+    </div>
+
+  </body>
+</html>
