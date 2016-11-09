@@ -1,61 +1,51 @@
-var carroImg = 6;
-var qtdCarros = 4;
-var carros = [];
-var carrosPos;
-var comprimentoPista;
-
-function prepararJogo() {
-	prepararPista();
-
-	document.querySelector('#iniciarJogo')
-		.addEventListener('click', iniciar);
-}
-
-function prepararPista() {
+window.onload = prepararInicio;
+function prepararInicio() {
 	var html = '';
-	for (var i = 0; i < qtdCarros; i++) {
-		html += '<li><img src="img/img' + carroImg + '.png"></li>';
-	}
-	document.getElementById('jogo').innerHTML = html;
-
-	carros = document.querySelectorAll('#jogo li img');
-}
-
-function iniciar() {
-	carrosPos = [];
-	for (var i = 0; i < qtdCarros; i++) {
-		carrosPos[i] = 0;
+	for (var i = 1; i <= 8; i++) {
+		html += '<li><label for="modelo' + i + '"><input type="radio" name="modelo" id="modelo' + i + '" value="' + i + '" /><img src="img/img' + i + '.png" /></label></li>';
 	}
 
-	comprimentoPista = document.querySelector('#jogo').offsetWidth;
-	comprimentoPista -= carros[0].offsetWidth + 5;
+	document.querySelector('#telaStart ul')
+		.innerHTML = html;
 
-	quadro();
+	document.getElementById('confirmar')
+		.addEventListener('click', confirmarClicado)
+}
+function confirmarClicado() {
+	qtdCarros = parseInt(document.getElementById('qtdCarros').value, 10);
+
+	carroImg = document.querySelector('#telaStart ul input:checked').value;
+	carroImg = parseInt(carroImg, 10);
+
+	document.querySelector('#telaStart')
+		.style.display = 'none';
+
+	prepararTela();
+
+	document.querySelector('#telaJogo')
+		.style.display = 'block';
+}
+function fim(vencedor) {
+	vencedor++;
+
+	document.querySelector('#telaFinal p')
+		.innerHTML = 'Carro ' + vencedor + ' é o vencedor';
+
+	document.querySelector('#telaJogo')
+		.style.display = 'none';
+
+	document.querySelector('#telaFinal')
+		.style.display = 'block';
 }
 
-function quadro() {
-	for (var i = 0; i < qtdCarros; i++) {
-		carrosPos[i] += passo(carrosPos[i]);
-		carros[i].style.left = carrosPos[i] + 'px';
 
-		if (carrosPos[i] >= comprimentoPista) {
-			window.alert('Carro ' + (i + 1) + ' venceu!');
-			return ;
-		}
-	}
-	setTimeout(quadro, 1000/24);
-}
 
-function passo(pos) {
-	pos = pos / comprimentoPista;
-	if (pos < 0.333) {
-		return mt_rand(1,3);
-	} else if (pos < 0.666) {
-		return mt_rand(2,4);
-	} else {
-		return mt_rand(3,5);
-	}
-}
+
+
+
+
+
+
 
 
 

@@ -4,7 +4,6 @@ var carros = [];
 var carrosPos;
 var comprimentoPista;
 
-window.onload = prepararTela;
 function prepararTela() {
 	prepararPista();
 
@@ -40,7 +39,7 @@ function quadro() {
 		carros[i].style.left = carrosPos[i] + 'px';
 
 		if (carrosPos[i] >= comprimentoPista) {
-			window.alert('Carro ' + (i + 1) + ' venceu!');
+			fim(i);
 			return ;
 		}
 	}
