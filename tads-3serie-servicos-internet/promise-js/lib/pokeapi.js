@@ -28,6 +28,10 @@ function carregar() {
     .then(mostrarLoading) // 1
     .then(pegarNumero) // 2
     .then(carregarPokemon) // 3
+    .then(mostrarNome) // 6
+    .then(mostrarImagens) // 8
+    .then(mostrarTipos) // 9
+    .then(esconderLoading) // 10
     ;
 }
 
@@ -37,8 +41,49 @@ function pegarNumero(result) {
 }
 
 function carregarPokemon(result) {
-  console.log(result);
+  var p = new Promise(function(resolve, reject) {
+    var url = 'http://pokeapi.co/api/v2/pokemon/' + result + '/';
+    var r = $.get(url);
+    r.done(function(data) {
+      resolve(data);
+    });
+  });
+  return p;
 }
+
+function mostrarNome(result) {
+  var html = '#' + result.id + ' - ' + result.name;
+  $('#nome').html(html);
+
+  return result;
+}
+
+function mostrarImagens(result) {
+  var html = '';
+  html += '<img src="' + result.sprites.front_default + '" />';
+  html += '<img src="' + result.sprites.back_default + '" />';
+  $('#imgs').html(html);
+
+  return result;
+}
+
+function mostrarTipos(result) {
+  var html = [];
+  for (var i in result.types) {
+    var tipo = result.types[i];
+
+    html.push('<span>' + tipo.type.name + '</span>');
+  }
+  $('#tipos').html('Tipos: ' + html.join(' - '));
+}
+
+
+
+
+
+
+
+
 
 
 

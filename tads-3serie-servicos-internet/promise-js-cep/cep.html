@@ -4,13 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Pokedex</title>
+    <title>Pesquisa de CEP</title>
 
-    <link rel="stylesheet" type="text/css" href="./lib/pokeapi.css">
+    <link rel="stylesheet" type="text/css" href="./lib/cep.css">
 
     <script src="./lib/jquery.js"></script>
-    <script src="./lib/pokeapi.js"></script>
-    <!--<script src="./lib/promessa.js"></script>-->
+    <script src="./lib/cep.js"></script>
   </head>
   <body>
 
@@ -18,15 +17,13 @@
 
     <div id="container">
       <form id="frm">
-        <label>Número:</label>
-        <input type="number" name="numero" id="fnumero" />
+        <label>Cep:</label>
+        <input type="number" name="cep" id="fcep" />
         <button type="button" id="botao">Pesquisar</button>
       </form>
 
       <div id="saida">
-        <p id="nome"></p>
-        <div id="imgs"></div>
-        <p id="tipos"></p>
+        
       </div>
     </div>
 

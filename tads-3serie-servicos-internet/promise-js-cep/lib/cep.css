@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  margin: 0 auto;
+  width: 500px;
+}
+
+#loading {
+  background-color: rgba(0,0,0,0.5);
+  background-image: url(../loading.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+  display: none;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+}
