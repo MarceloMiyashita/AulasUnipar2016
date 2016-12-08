@@ -1,0 +1,54 @@
+=============
+1. Fazer uma função com nome parImpar que recebe um vetor com valores numéricos. A função deve contar a quantidade de números pares e impares do vetor, e depois mostrar para o usuário a quantidade de cada um.
+=============
+2. O usuário vai digitar numeros separados por virgula. Pegar essa string, converter em um vetor com números e usar a função parImpar.
+=============
+3. Faça uma função que receba a idade de uma pessoa expressa em anos, meses e dias e retorne a idade apenas em dias. Pegar os valores do formulário e mostrar em #dias.
+=============
+4. Elabore um algoritmo que dada a idade de um nadador classifica-o em uma das seguintes categorias:
+
+infantil A = 5 - 7 anos
+infantil B = 8-10 anos
+juvenil A = 11-13 anos
+juvenil B = 14-17 anos
+adulto = maiores de 18 anos
+
+Usar innerHTML para mostrar o resultado.
+=============
+5. Faça uma função que retorne um vetor com x elementos multiplos de y. Os valores x e y são parametros da função.
+A função deve ser disparada pelo clique de um botão. Os valores de X e Y serão informados pelo usuário. Os valores dos números devem ser exibidos em #saida.
+=============
+6. Fazer uma função que recebe um valor X. A função deve retornar o HTML de uma tabuada. Ex.:
+1 x 1 = 1
+1 x 2 = 2
+1 x 3 = 3
+1 x 4 = 4
+...
+
+Gerar tabuadas do 1 ao 10 quando o usuário clicar no botão, e mostrar no respectivo espaço de saída.
+=============
+7. Fazer uma função que calcule e retorne os valores de Bhaskara para um conjunto de entradas A, B e C.
+Criar um HTML em que o usuário possa informar A, B e C, e quando clicar no botão OK calcular e mostrar pro usuários os resultados.
+=============
+Criar um algoritmo em Javascript que faça o calculo do IMC, e mostrar se o usuario esta abaixo do peso, peso ideal ou acima do peso.
+=============
+Criar um algoritmo que calcula a nota de acordo com as regras da Unipar.
+Com base em 4 variaveis, calcular média aritmética, e mostrar se o aluno esta aprovado ou não.
+==============
+Escreva um código que calcule a soma de 1 até 100. (obs: a resposta é 5050)
+==============
+Crie um Array igual ao abaixo e mostre apenas os nomes das pessoas que tenham 4 letras.
+var pessoas = ["João", "José", "Maria", "Sebastião", "Antônio"];
+Dica: variavel.length calcula o comprimeto da variavel string.
+==============
+O cardápio de uma lancheria é o seguinte:
+
+Especificação	Código	Preço
+Cachorro quente	100	1,20
+Bauru simples	101	1,30
+Bauru com ovo	102	1,50
+Hambúrger	103	1,20
+Cheeseburguer	104	1,30
+Refrigerante	105	1,00
+Escrever um algoritmo que leia o código do item pedido, a quantidade e calcule o valor a ser pago por aquele lanche. Considere que a cada execução somente será calculado um item.
+==============
